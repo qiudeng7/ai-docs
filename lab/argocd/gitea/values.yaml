@@ -1,0 +1,68 @@
+# Gitea Helm Chart values.yaml
+# 适合 kind 环境和演示的简化配置
+
+replicaCount: 1
+
+image:
+  repository: gitea/gitea
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  http:
+    type: ClusterIP
+    port: 3000
+  ssh:
+    type: ClusterIP
+    port: 22
+
+ingress:
+  enabled: false  # 简化配置，暂不启用 ingress
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# 数据库配置 - 使用 SQLite 简化部署
+gitea:
+  config:
+    database:
+      DB_TYPE: sqlite3
+      HOST: localhost:3306
+      NAME: gitea
+      USER: gitea
+      PASSWD: gitea
+    server:
+      APP_NAME: "Gitea: Git with a cup of tea"
+      DOMAIN: localhost
+      ROOT_URL: http://localhost:3000/
+      SSH_DOMAIN: localhost
+      SSH_PORT: 22
+      OFFLINE_MODE: false
+    repository:
+      DEFAULT_BRANCH: main
+      DEFAULT_PRIVATE: last
+    security:
+      INSTALL_LOCK: true
+    webhook:
+      ENABLE_TASK_HELPER: true
+
+# 持久化存储配置
+persistence:
+  enabled: true
+  size: 1Gi
+  storageClass: "standard"
+
+# 禁用不必要的组件
+postgresql:
+  enabled: false
+mysql:
+  enabled: false
+redis-cluster:
+  enabled: false
+memcached:
+  enabled: false
