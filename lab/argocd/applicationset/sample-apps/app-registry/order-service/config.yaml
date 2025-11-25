@@ -1,0 +1,18 @@
+# 订单服务配置
+appName: order-service
+environment: dev
+team: business
+domain: order-management
+cluster: https://kubernetes.default.svc
+namespace: order-service
+path: order-service
+gitRepoURL: https://github.com/your-org/order-service.git
+targetRevision: main
+replicas: 1
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 400m
+    memory: 512Mi

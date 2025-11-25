@@ -1,0 +1,51 @@
+# Cluster Generator 示例
+# 这个 ApplicationSet 为 ArgoCD 管理的所有集群部署监控应用
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-generator-example
+  namespace: argocd
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          monitoring: 'enabled'  # 只选择启用监控的集群
+  template:
+    metadata:
+      name: 'monitoring-{{name}}'
+      labels:
+        app: monitoring
+        cluster: '{{name}}'
+        generator: cluster
+    spec:
+      project: monitoring
+      source:
+        repoURL: https://github.com/your-org/monitoring-stack.git
+        targetRevision: HEAD
+        path: 'prometheus-grafana'
+        helm:
+          valueFiles:
+          - 'values-{{name}}.yaml'  # 每个集群使用不同的 values 文件
+          parameters:
+          - name: clusterName
+            value: '{{name}}'
+          - name: prometheus.server.retention
+            value: '{{#if (eq name "prod-cluster")}}30d{{else}}15d{{/if}}'
+      destination:
+        server: '{{server}}'  # 使用集群的 API Server 地址
+        namespace: monitoring
+      syncPolicy:
+        automated:
+          prune: false  # 监控应用不自动删除
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+      # 忽略 Prometheus 数据持久化卷的差异
+      ignoreDifferences:
+      - group: apps
+        kind: StatefulSet
+        jsonPointers:
+        - /spec/volumeClaimTemplates

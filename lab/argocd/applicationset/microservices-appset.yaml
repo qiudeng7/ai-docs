@@ -1,0 +1,90 @@
+# 完整的微服务部署示例
+# 这个 ApplicationSet 展示了如何为微服务架构实现多环境部署
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: microservices-appset
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-options: CreateNamespace=true
+spec:
+  generators:
+  - matrix:
+      generators:
+      # 发现所有微服务
+      - git:
+          repoURL: https://github.com/your-org/microservices-config.git  # 替换为您的仓库
+          revision: HEAD
+          directories:
+          - path: services/*
+      # 定义所有环境和对应的配置
+      - list:
+          elements:
+          - env: dev
+            namespace: microservices-dev
+            kustomizeOverlay: dev
+            replicas: 1
+            autoSync: true
+            imageTag: latest
+          - env: staging
+            namespace: microservices-staging
+            kustomizeOverlay: staging
+            replicas: 2
+            autoSync: true
+            imageTag: staging
+          - env: prod
+            namespace: microservices-prod
+            kustomizeOverlay: prod
+            replicas: 3
+            autoSync: false  # 生产环境手动同步
+            imageTag: stable
+  template:
+    metadata:
+      name: '{{path.basename}}-{{env}}'
+      labels:
+        app: '{{path.basename}}'
+        environment: '{{env}}'
+        component: microservice
+        managed-by: applicationset
+      annotations:
+        argocd.argoproj.io/compare-options: IgnoreExtraneousLabels
+        argocd.argoproj.io/sync-wave: '{{#if (eq env "prod")}}2{{else}}1{{/if}}'
+        notifications.argoproj.io/subscribe.on-sync-succeeded.slack: microservices-{{env}}
+    spec:
+      project: 'project-{{env}}'
+      source:
+        repoURL: https://github.com/your-org/microservices-config.git
+        targetRevision: HEAD
+        path: '{{path}}/overlays/{{kustomizeOverlay}}'
+        kustomize:
+          images:
+          - name: '{{path.basename}}'
+            newTag: '{{imageTag}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: '{{autoSync}}'
+          selfHeal: '{{autoSync}}'
+        syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - RespectIgnoreDifferences=true
+        retry:
+          limit: 3
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+      ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jsonPointers:
+        - /spec/replicas  # 允许手动扩容
+      - group: autoscaling
+        kind: HorizontalPodAutoscaler
+        jsonPointers:
+        - /spec/minReplicas
+        - /spec/maxReplicas

@@ -1,0 +1,18 @@
+# 用户服务配置
+appName: user-service
+environment: dev
+team: platform
+domain: user-management
+cluster: https://kubernetes.default.svc
+namespace: user-service
+path: user-service
+gitRepoURL: https://github.com/your-org/user-service.git
+targetRevision: main
+replicas: 1
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi

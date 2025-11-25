@@ -1,0 +1,52 @@
+# Git Files Generator 示例
+# 这个 ApplicationSet 基于配置文件生成应用，每个配置文件定义一个应用的部署参数
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: git-files-example
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/your-org/app-registry.git  # 替换为您的仓库地址
+      revision: HEAD
+      files:
+      - path: 'apps/*/config.yaml'  # 匹配所有应用的配置文件
+  template:
+    metadata:
+      name: '{{appName}}'
+      labels:
+        app: '{{appName}}'
+        environment: '{{environment}}'
+        team: '{{team}}'
+        generator: git-files
+    spec:
+      project: 'project-{{environment}}'  # 不同环境使用不同的项目
+      source:
+        repoURL: '{{gitRepoURL}}'
+        targetRevision: '{{targetRevision}}'
+        path: '{{path}}'
+        helm:
+          parameters:
+          - name: environment
+            value: '{{environment}}'
+          - name: team
+            value: '{{team}}'
+          - name: domain
+            value: '{{domain}}'
+      destination:
+        server: '{{cluster}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+        - RespectIgnoreDifferences=true
+      ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jsonPointers:
+        - /spec/replicas  # 忽略手动调整的副本数

@@ -1,0 +1,36 @@
+# Git Directory Generator 示例
+# 这个 ApplicationSet 会扫描 Git 仓库中的目录结构，为每个目录创建一个 Application
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: git-directory-example
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/your-org/app-configs.git  # 替换为您的仓库地址
+      revision: HEAD
+      directories:
+      - path: environments/*  # 扫描 environments 目录下的所有子目录
+  template:
+    metadata:
+      name: '{{path.basename}}-app'  # 使用目录名作为应用名
+      labels:
+        environment: '{{path.basename}}'
+        generator: git-directory
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/your-org/app-configs.git
+        targetRevision: HEAD
+        path: '{{path}}'  # 使用发现的路径
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'  # 使用目录名作为命名空间
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true

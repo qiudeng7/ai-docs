@@ -1,0 +1,84 @@
+# Matrix Generator 示例
+# 这个 ApplicationSet 使用 Matrix Generator 组合多个参数源，生成所有可能的应用组合
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: matrix-generator-example
+  namespace: argocd
+spec:
+  generators:
+  - matrix:
+      generators:
+      # 第一个生成器：发现所有服务
+      - git:
+          repoURL: https://github.com/your-org/microservices-config.git
+          revision: HEAD
+          directories:
+          - path: services/*
+      # 第二个生成器：定义所有环境
+      - list:
+          elements:
+          - env: dev
+            replicas: 1
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+              limits:
+                cpu: 200m
+                memory: 256Mi
+          - env: staging
+            replicas: 2
+            resources:
+              requests:
+                cpu: 200m
+                memory: 256Mi
+              limits:
+                cpu: 500m
+                memory: 512Mi
+          - env: prod
+            replicas: 3
+            resources:
+              requests:
+                cpu: 500m
+                memory: 512Mi
+              limits:
+                cpu: 1000m
+                memory: 1Gi
+  template:
+    metadata:
+      name: '{{path.basename}}-{{env}}'
+      labels:
+        app: '{{path.basename}}'
+        environment: '{{env}}'
+        generator: matrix
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/your-org/microservices-config.git
+        targetRevision: HEAD
+        path: '{{path}}'
+        helm:
+          parameters:
+          - name: replicaCount
+            value: '{{replicas}}'
+          - name: environment
+            value: '{{env}}'
+          - name: resources.requests.cpu
+            value: '{{resources.requests.cpu}}'
+          - name: resources.requests.memory
+            value: '{{resources.requests.memory}}'
+          - name: resources.limits.cpu
+            value: '{{resources.limits.cpu}}'
+          - name: resources.limits.memory
+            value: '{{resources.limits.memory}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}-{{env}}'
+      syncPolicy:
+        automated:
+          prune: '{{#if (eq env "prod")}}false{{else}}true{{/if}}'
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
