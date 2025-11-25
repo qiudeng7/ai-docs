@@ -6,6 +6,21 @@
 
 本readme供AI阅读，也供人类阅读。
 
+## 克隆仓库
+
+在 references 目录下每个技术栈的源码仓库及其文档仓库（如果有单独的文档仓库的话）以submodule的形式在本仓库中引用，因此克隆本仓库的时候需要这样克隆：
+
+```bash
+git clone --recurse-submodules https://github.com/qiudeng7/ai-docs.git
+```
+
+如果已经克隆了仓库但没有包含submodule，可以运行：
+
+```bash
+cd ai-docs
+git submodule update --init --recursive
+```
+
 ## 我的知识基础
 
 1. linux和容器化相关技术栈
