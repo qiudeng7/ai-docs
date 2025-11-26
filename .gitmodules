@@ -1,3 +1,9 @@
 [submodule "references/argocd"]
 	path = references/argocd
 	url = https://github.com/argoproj/argo-cd.git
+[submodule "references/trpc"]
+	path = references/trpc
+	url = https://github.com/trpc/trpc.git
+[submodule "references/trpc-to-openapi"]
+	path = references/trpc-to-openapi
+	url = https://github.com/mcampa/trpc-to-openapi.git
