@@ -7,3 +7,6 @@
 [submodule "references/trpc-to-openapi"]
 	path = references/trpc-to-openapi
 	url = https://github.com/mcampa/trpc-to-openapi.git
+[submodule "references/openai-node"]
+	path = references/openai-node
+	url = https://github.com/openai/openai-node.git
