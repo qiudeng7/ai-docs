@@ -17,7 +17,7 @@ wget -c -v -i ./pdf_download_links.txt
 
 ### 转图片
 
-claude code不能直接读pdf，为了方便AI处理，使用unipdf把pdf渲染成jpg，输出到`pdf-to-jpg`目录下
+claude code不能直接读pdf，pdf转换成markdown也没有非常统一的方法，所以最好的方式就是把pdf整页渲染成图片，再把pdf中的图片元素提取出来，现在许多模型有相当不错的识图能力，让AI根据图片转markdown，再用AI对最终的markdown建立目录索引，就可以得到pdf转markdown的电子书。
 
 ### 生成索引
 
