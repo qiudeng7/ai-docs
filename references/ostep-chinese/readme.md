@@ -2,6 +2,8 @@
 
 本项目的目标是获取一份中文版《操作系统导论》的相对准确的markdown版本，从而方便AI阅读。
 
+但是目前有个问题，AI并不能相对完整的从图片中输出文字。下一步工作是使用工具提取出文字，AI只从渲染图片中理解排版。
+
 ## 目录
 
 - 前言
@@ -54,7 +56,10 @@
 
 1. 先把pdf整页渲染成图片(`pdf_render_image/`目录)
 2. 再把pdf中的图片元素提取出来 (`pdf_extract_image/`目录)
-3. 启动多个claude code无头模式实例（参考文档 https://code.claude.com/docs/en/headless ），每个实例都只翻译一个小节，现在许多模型有相当不错的识图能力，让AI根据渲染图片理解小节的内容，然后再读取提取的图片，该claude code就可以生成该小节的markdown文档，并且要求他在合适的地方引用从pdf中提取的图片。
+3. 让一个claude code启动多个claude code无头模式实例（参考文档 https://code.claude.com/docs/en/headless ），每个实例根据渲染图片理解小节的内容，然后再读取提取图片，该claude code就可以生成该小节的markdown文档，并且要求他在合适的地方引用从pdf中提取的图片。
+   1. 不需要在markdown中引用渲染图片
+   2. pdf_extract_image 和 pdf_render_image 中小节内容是对应的，但有的小节没有图片，pdf_extract_image中就不会有对应的目录。
+   3. AI必须尽可能完整的将 render_image中的文字 输出到markdown
 
 ### 获取pdf
 
