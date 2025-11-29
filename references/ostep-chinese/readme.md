@@ -50,7 +50,11 @@
 
 ## 如何转译
 
-这里介绍我是如何进行转译工作的。在网络上我只能找到pdf版本的资源，claude code不能直接读pdf，pdf转换成markdown也没有非常统一的方法，我尝试过marker，效果并不是很好。所以我认为最好的方式就是把pdf整页渲染成图片，再把pdf中的图片元素提取出来，现在许多模型有相当不错的识图能力，让AI根据图片转markdown，再用AI对最终的markdown建立目录索引，就可以得到pdf转markdown的电子书。
+这里介绍我是如何进行转译工作的。在网络上我只能找到pdf版本的资源，由于claude code不能直接读pdf，且pdf转换成markdown也没有非常统一的方法(我尝试过marker，效果并不是很好)。所以我认为最好的方式就是：
+
+1. 先把pdf整页渲染成图片(`pdf_render_image/`目录)
+2. 再把pdf中的图片元素提取出来 (`pdf_extract_image/`目录)
+3. 每一个claude code实例都只翻译一个小节，现在许多模型有相当不错的识图能力，让AI根据渲染图片理解小节的内容，然后再读取提取的图片，该claude code就可以生成该小节的markdown文档，并且要求他在合适的地方引用从pdf中提取的图片。
 
 ### 获取pdf
 
