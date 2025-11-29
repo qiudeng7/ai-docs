@@ -54,7 +54,7 @@
 
 1. 先把pdf整页渲染成图片(`pdf_render_image/`目录)
 2. 再把pdf中的图片元素提取出来 (`pdf_extract_image/`目录)
-3. 每一个claude code实例都只翻译一个小节，现在许多模型有相当不错的识图能力，让AI根据渲染图片理解小节的内容，然后再读取提取的图片，该claude code就可以生成该小节的markdown文档，并且要求他在合适的地方引用从pdf中提取的图片。
+3. 启动多个claude code无头模式实例（参考文档 https://code.claude.com/docs/en/headless ），每个实例都只翻译一个小节，现在许多模型有相当不错的识图能力，让AI根据渲染图片理解小节的内容，然后再读取提取的图片，该claude code就可以生成该小节的markdown文档，并且要求他在合适的地方引用从pdf中提取的图片。
 
 ### 获取pdf
 
