@@ -2,8 +2,6 @@
 
 本项目的目标是获取一份中文版《操作系统导论》的相对准确的markdown版本，从而方便AI阅读。
 
-但是目前有个问题，AI并不能相对完整的从图片中输出文字。下一步工作是使用工具提取出文字，AI只从渲染图片中理解排版。
-
 ## 目录
 
 - 前言
@@ -54,12 +52,13 @@
 
 这里介绍我是如何进行转译工作的。在网络上我只能找到pdf版本的资源，由于claude code不能直接读pdf，且pdf转换成markdown也没有非常统一的方法(我尝试过marker，效果并不是很好)。所以我认为最好的方式就是：
 
-1. 先把pdf整页渲染成图片(`pdf_render_image/`目录)
-2. 再把pdf中的图片元素提取出来 (`pdf_extract_image/`目录)
-3. 让一个claude code启动多个claude code无头模式实例（参考文档 https://code.claude.com/docs/en/headless ），每个实例根据渲染图片理解小节的内容，然后再读取提取图片，该claude code就可以生成该小节的markdown文档，并且要求他在合适的地方引用从pdf中提取的图片。
-   1. 不需要在markdown中引用渲染图片
+1. 整页渲染pdf图片(`pdf_render_image/`目录)，用于ai理解内容排版
+2. 提取pdf图片 (`pdf_extract_image/`目录)，用于ai生成markdown的时候引用图片
+3. 提取pdf文本 (`pdf_extract_text/`目录)，用于ai利用该文本生成markdown
+4. 让一个agent A 组织多个agent B，每个agent B只翻译一小节，要求如下：
+   1. 文档生成在 `markdown/[pdf file name as dir name]/index.md`，如有必要，切割成多个文档。
    2. pdf_extract_image 和 pdf_render_image 中小节内容是对应的，但有的小节没有图片，pdf_extract_image中就不会有对应的目录。
-   3. AI必须尽可能完整的将 render_image中的文字 输出到markdown
+   3. 如果需要引用图片，把图片复制到`markdown/[pdf file name as dir name]/images/`目录下引用，如果不需要就不创建该目录。
 
 ### 获取pdf
 
