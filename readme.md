@@ -62,3 +62,7 @@ git submodule update --init --recursive
 2. 果是单个文件就直接用代码块写在文档里
 3. 如果可以引用源码仓库中的文件就直接相对路径引用references目录下的文件
 4. 只有是AI原创的，并且包含多个文件的示例项目结构，才需要专门生成学习资源文件，那就写到`lab/[tech]/[lab-name]/`目录下，在文档中说明学习资源的位置。
+
+## 如何处理pdf资料
+
+`tools/pdf` 目录下有一个`unipdf`可执行程序，它编译自这个项目 https://github.com/unidoc/unipdf-cli，简洁起见已经删除源码仓库，这个二进制文件可以在linux amd64执行。使用方法见readme。
