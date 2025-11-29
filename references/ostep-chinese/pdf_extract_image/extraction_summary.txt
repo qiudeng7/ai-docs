@@ -1,0 +1,409 @@
+PDF图片提取结果摘要
+==================================================
+
+PDF文件: 01.pdf
+提取图片数量: 0
+
+PDF文件: 02.pdf
+提取图片数量: 0
+
+PDF文件: 03.pdf
+提取图片数量: 0
+
+PDF文件: 04.pdf
+提取图片数量: 2
+图片列表:
+  - page_003_img_01.png
+  - page_004_img_01.png
+
+PDF文件: 05.pdf
+提取图片数量: 0
+
+PDF文件: 06.pdf
+提取图片数量: 0
+
+PDF文件: 07.pdf
+提取图片数量: 9
+图片列表:
+  - page_003_img_01.png
+  - page_003_img_02.png
+  - page_004_img_01.png
+  - page_004_img_02.png
+  - page_004_img_03.png
+  - page_005_img_01.png
+  - page_005_img_02.png
+  - page_007_img_01.png
+  - page_007_img_02.png
+
+PDF文件: 08.pdf
+提取图片数量: 7
+图片列表:
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_003_img_01.png
+  - page_003_img_02.png
+  - page_004_img_01.png
+  - page_005_img_01.png
+  - page_006_img_01.png
+
+PDF文件: 09.pdf
+提取图片数量: 2
+图片列表:
+  - page_003_img_01.png
+  - page_004_img_01.png
+
+PDF文件: 10.pdf
+提取图片数量: 14
+图片列表:
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_004_img_01.png
+  - page_004_img_02.png
+  - page_005_img_01.png
+  - page_005_img_02.png
+  - page_005_img_03.png
+  - page_006_img_01.png
+  - page_006_img_02.png
+  - page_006_img_03.png
+  - page_006_img_04.png
+  - page_006_img_05.png
+  - page_006_img_06.png
+  - page_006_img_07.png
+
+PDF文件: 11.pdf
+提取图片数量: 0
+
+PDF文件: 12.pdf
+提取图片数量: 0
+
+PDF文件: 13.pdf
+提取图片数量: 3
+图片列表:
+  - page_001_img_01.png
+  - page_002_img_01.png
+  - page_002_img_02.png
+
+PDF文件: 14.pdf
+提取图片数量: 0
+
+PDF文件: 15.pdf
+提取图片数量: 2
+图片列表:
+  - page_003_img_01.png
+  - page_003_img_02.png
+
+PDF文件: 16.pdf
+提取图片数量: 5
+图片列表:
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_003_img_01.png
+  - page_003_img_02.png
+  - page_006_img_01.png
+
+PDF文件: 17.pdf
+提取图片数量: 17
+图片列表:
+  - page_001_img_01.png
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_003_img_01.png
+  - page_003_img_02.png
+  - page_003_img_03.png
+  - page_004_img_01.png
+  - page_004_img_02.png
+  - page_005_img_01.png
+  - page_005_img_02.png
+  - page_006_img_01.png
+  - page_006_img_02.png
+  - page_007_img_01.png
+  - page_009_img_01.png
+  - page_009_img_02.png
+  - page_009_img_03.png
+  - page_010_img_01.png
+
+PDF文件: 18.pdf
+提取图片数量: 9
+图片列表:
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_002_img_03.png
+  - page_002_img_04.png
+  - page_003_img_01.png
+  - page_003_img_02.png
+  - page_004_img_01.png
+  - page_005_img_01.png
+  - page_008_img_01.png
+
+PDF文件: 19.pdf
+提取图片数量: 3
+图片列表:
+  - page_002_img_01.png
+  - page_008_img_01.png
+  - page_012_img_01.png
+
+PDF文件: 20.pdf
+提取图片数量: 8
+图片列表:
+  - page_002_img_01.png
+  - page_003_img_01.png
+  - page_005_img_01.png
+  - page_006_img_01.png
+  - page_006_img_02.png
+  - page_006_img_03.png
+  - page_008_img_01.png
+  - page_008_img_02.png
+
+PDF文件: 21.pdf
+提取图片数量: 1
+图片列表:
+  - page_002_img_01.png
+
+PDF文件: 22.pdf
+提取图片数量: 5
+图片列表:
+  - page_005_img_01.png
+  - page_008_img_01.png
+  - page_008_img_02.png
+  - page_009_img_01.png
+  - page_011_img_01.png
+
+PDF文件: 23.pdf
+提取图片数量: 1
+图片列表:
+  - page_003_img_01.png
+
+PDF文件: 24.pdf
+提取图片数量: 0
+
+PDF文件: 25.pdf
+提取图片数量: 0
+
+PDF文件: 26.pdf
+提取图片数量: 1
+图片列表:
+  - page_001_img_01.png
+
+PDF文件: 27.pdf
+提取图片数量: 0
+
+PDF文件: 28.pdf
+提取图片数量: 0
+
+PDF文件: 29.pdf
+提取图片数量: 3
+图片列表:
+  - page_003_img_01.png
+  - page_004_img_01.png
+  - page_010_img_01.png
+
+PDF文件: 30.pdf
+提取图片数量: 0
+
+PDF文件: 31.pdf
+提取图片数量: 1
+图片列表:
+  - page_011_img_01.png
+
+PDF文件: 32.pdf
+提取图片数量: 3
+图片列表:
+  - page_005_img_01.png
+  - page_009_img_01.png
+  - page_010_img_01.png
+
+PDF文件: 33.pdf
+提取图片数量: 0
+
+PDF文件: 34.pdf
+提取图片数量: 0
+
+PDF文件: 35.pdf
+提取图片数量: 0
+
+PDF文件: 36.pdf
+提取图片数量: 7
+图片列表:
+  - page_001_img_01.png
+  - page_002_img_01.png
+  - page_003_img_01.png
+  - page_003_img_02.png
+  - page_004_img_01.png
+  - page_005_img_01.png
+  - page_006_img_01.png
+
+PDF文件: 37.pdf
+提取图片数量: 6
+图片列表:
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_003_img_01.png
+  - page_004_img_01.png
+  - page_008_img_01.png
+  - page_009_img_01.png
+
+PDF文件: 38.pdf
+提取图片数量: 0
+
+PDF文件: 39.pdf
+提取图片数量: 1
+图片列表:
+  - page_002_img_01.png
+
+PDF文件: 40.pdf
+提取图片数量: 6
+图片列表:
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_002_img_03.png
+  - page_003_img_01.png
+  - page_003_img_02.png
+  - page_004_img_01.png
+
+PDF文件: 41.pdf
+提取图片数量: 11
+图片列表:
+  - page_001_img_01.png
+  - page_001_img_02.png
+  - page_001_img_03.png
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_003_img_01.png
+  - page_004_img_01.png
+  - page_005_img_01.png
+  - page_005_img_02.png
+  - page_006_img_01.png
+  - page_006_img_02.png
+
+PDF文件: 42.pdf
+提取图片数量: 13
+图片列表:
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_006_img_01.png
+  - page_006_img_02.png
+  - page_006_img_03.png
+  - page_007_img_01.png
+  - page_008_img_01.png
+  - page_008_img_02.png
+  - page_009_img_01.png
+  - page_010_img_01.png
+  - page_010_img_02.png
+  - page_011_img_01.png
+  - page_011_img_02.png
+
+PDF文件: 43.pdf
+提取图片数量: 9
+图片列表:
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_003_img_01.png
+  - page_005_img_01.png
+  - page_006_img_01.png
+  - page_006_img_02.png
+  - page_007_img_01.png
+  - page_007_img_02.png
+  - page_009_img_01.png
+
+PDF文件: 44.pdf
+提取图片数量: 4
+图片列表:
+  - page_005_img_01.png
+  - page_005_img_02.png
+  - page_005_img_03.png
+  - page_006_img_01.png
+
+PDF文件: 45.pdf
+提取图片数量: 0
+
+PDF文件: 46.pdf
+提取图片数量: 0
+
+PDF文件: 47.pdf
+提取图片数量: 3
+图片列表:
+  - page_004_img_01.png
+  - page_005_img_01.png
+  - page_005_img_02.png
+
+PDF文件: 48.pdf
+提取图片数量: 4
+图片列表:
+  - page_001_img_01.png
+  - page_002_img_01.png
+  - page_007_img_01.png
+  - page_009_img_01.png
+
+PDF文件: 49.pdf
+提取图片数量: 0
+
+PDF文件: 50.pdf
+提取图片数量: 0
+
+PDF文件: BF1.pdf
+提取图片数量: 0
+
+PDF文件: a-fy.pdf
+提取图片数量: 0
+
+PDF文件: b-bq.pdf
+提取图片数量: 0
+
+PDF文件: bf2.pdf
+提取图片数量: 0
+
+PDF文件: bf3.pdf
+提取图片数量: 0
+
+PDF文件: d-yb.pdf
+提取图片数量: 18
+图片列表:
+  - page_001_img_01.png
+  - page_002_img_01.png
+  - page_002_img_02.png
+  - page_002_img_03.png
+  - page_002_img_04.png
+  - page_002_img_05.png
+  - page_002_img_06.png
+  - page_002_img_07.png
+  - page_002_img_08.png
+  - page_002_img_09.png
+  - page_002_img_10.png
+  - page_002_img_11.png
+  - page_002_img_12.png
+  - page_002_img_13.png
+  - page_002_img_14.png
+  - page_002_img_15.png
+  - page_002_img_16.png
+  - page_002_img_17.png
+
+PDF文件: fla.pdf
+提取图片数量: 0
+
+PDF文件: flb.pdf
+提取图片数量: 1
+图片列表:
+  - page_005_img_01.png
+
+PDF文件: flc.pdf
+提取图片数量: 0
+
+PDF文件: fld.pdf
+提取图片数量: 0
+
+PDF文件: fle.pdf
+提取图片数量: 0
+
+PDF文件: flf.pdf
+提取图片数量: 0
+
+PDF文件: flg.pdf
+提取图片数量: 0
+
+PDF文件: preface.pdf
+提取图片数量: 0
+
+PDF文件: toc.pdf
+提取图片数量: 0
+
+总计: 65 个PDF文件, 179 张图片
