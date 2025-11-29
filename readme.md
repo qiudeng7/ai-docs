@@ -65,4 +65,4 @@ git submodule update --init --recursive
 
 ## 如何处理pdf资料
 
-`tools/pdf` 目录下有一个`unipdf`可执行程序，它编译自这个项目 https://github.com/unidoc/unipdf-cli，简洁起见已经删除源码仓库，这个二进制文件可以在linux amd64执行。使用方法见readme。
+`tools/pdf` 目录下有一个`unipdf`可执行程序，它编译自这个项目 https://github.com/unidoc/unipdf-cli，简洁起见已经删除源码仓库，这个二进制文件可以在linux amd64执行。使用方法见tools/pdf/readme。
