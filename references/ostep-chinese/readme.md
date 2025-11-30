@@ -60,6 +60,10 @@
    2. pdf_extract_image 和 pdf_render_image 中小节内容是对应的，但有的小节没有图片，pdf_extract_image中就不会有对应的目录。
    3. 如果需要引用图片，把图片复制到`markdown/[pdf file name as dir name]/images/`目录下引用，如果不需要就不创建该目录。
 
+---
+
+实际上还有其他可探索的方法，比如最近很火的用banana读论文，用来读PDF应该也是可以的。另外很多书不仅有PDF还有epub，epub转markdown比pdf容易得多。
+
 ### 获取pdf
 
 你可以通过 pdf_download_links 自行下载按章节进行中文翻译的pdf，下载链接提取自 https://github.com/iTanken/ostep-chinese 中提到的中文pdf链接。
