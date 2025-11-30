@@ -10,3 +10,6 @@
 [submodule "references/openai-node"]
 	path = references/openai-node
 	url = https://github.com/openai/openai-node.git
+[submodule "references/fastify"]
+	path = references/fastify
+	url = https://github.com/fastify/fastify.git
