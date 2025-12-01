@@ -13,3 +13,6 @@
 [submodule "references/fastify"]
 	path = references/fastify
 	url = https://github.com/fastify/fastify.git
+[submodule "references/rxjs"]
+	path = references/rxjs
+	url = https://github.com/ReactiveX/rxjs.git
