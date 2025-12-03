@@ -2,6 +2,17 @@
 
 本项目的目标是获取一份中文版《操作系统导论》的相对准确的markdown版本，从而方便AI阅读。
 
+> 本项目的方法是获取pdf转markdown，经过多次方法论的更新之后我找到了效果比较好的pdf转markdown路径。
+> 
+> 后来我才想到还有其他方式，
+> 1. 比如最近很火的用nano banana读论文，用来读PDF应该也是可以的。
+> 2. 本书在zlib上有epub版本，epub转markdown应该会比pdf容易得多。
+> 
+> 最后我依然坚持采用pdf转markdown的方式:
+> 1. 能跑就行
+> 2. 有很多资源是没有epub只有pdf的，pdf转markdown的方法仍然有价值
+> 3. 我还没有亲自体验过nano banana，我觉得如此强大的模型应该会比GLM成本高很多。
+
 ## 目录
 
 - 前言
@@ -60,9 +71,13 @@
    2. pdf_extract_image 和 pdf_render_image 中小节内容是对应的，但有的小节没有图片，pdf_extract_image中就不会有对应的目录。
    3. 如果需要引用图片，把图片复制到`markdown/[pdf file name as dir name]/images/`目录下引用，如果不需要就不创建该目录。
 
----
+然后对AI说:
+```text
+理解本项目的目标和转译策略 @readme.md，你的身份是 Agent A，请你按照说明指挥Agent B完成转译任务。
+```
 
-实际上还有其他可探索的方法，比如最近很火的用banana读论文，用来读PDF应该也是可以的。另外很多书不仅有PDF还有epub，epub转markdown比pdf容易得多。
+另注：我用的模型是 GLM4.6
+
 
 ### 获取pdf
 
@@ -75,3 +90,29 @@ wget -c -v -i ./pdf_download_links.txt
 ```
 
 我已经下载好后的文件放在pdf目录下。
+
+### 提示词
+
+关于提示词的注意事项：
+
+1. 我的模型似乎有并发限制，所以我让Agent A不允许并发Agent B。
+
+
+#### 如果你是Agent A
+
+首先检查当前的转译进度，查看符合 `markdown/[章节号]/index.md` 格式的markdown有多少个章节。
+
+然后继续接下来的转译任务，你只需要对 Agent B 说：
+
+```text
+@readme.md 理解我的翻译策略，现在你来处理第 n 章，请将翻译结果保存到 markdown/[章节号]/index.md 文件中
+```
+
+参考这个文档来执行claude code的无头模式来执行转译任务： https://code.claude.com/docs/en/headless
+
+1. 注意要前台执行claude命令，不要放在后台，不要并发启动agent B。
+2. 如果 agent B 执行成功，则检查结果是否正确，然后开启下一个agent B。
+3. 如果claude命令报错，则重试一次，如果第二次仍然报错，则向用户报告错误细节，并由为用户提供以下选择：
+   1. 由Agent A（也就是你）亲自转译这一章节
+   2. 由Agent A 尝试处理报错
+   3. 用户手动处理报错
